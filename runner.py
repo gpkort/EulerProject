@@ -1,8 +1,26 @@
 import numpy as np
 
 
-
 NUMBER = 600851475143
+
+def eulers_1():
+    return sum(num for num in range(1, 1000) if num % 3 == 0 or num % 5 == 0)
+
+
+def eulers_2(*, first=2, max_fib=4000000):
+    current = 2
+    prev = first - 1 if current > 1 else 1
+    total = 0
+
+    def get_next(current, prev):
+        return current + prev, current
+
+    while current < max_fib:
+        if current % 2 == 0:
+            total = total + current
+        current, prev = get_next(current, prev)
+
+    return total
 
 
 def is_prime(number: int):
@@ -23,7 +41,6 @@ def is_prime(number: int):
 
 
 def factor(number):
-    # print('Start = {}'.format(start))
     if is_prime(number) or number == 1:
         return [1, number]
     i = 2
@@ -43,7 +60,6 @@ def get_flat_prime(primes, vals):
             vals.append(p)
         elif isinstance(p, list):
             vals.append(get_flat_prime(p, vals))
-
 
 
 def get_max_primes(number):
