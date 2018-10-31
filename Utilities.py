@@ -1,8 +1,14 @@
+import numpy as np
+
+BASIC_PRIMES = np.array([1, 2, 3, 5, 7, 11, 13, 17, 19])
+
+
 def is_prime(number: int):
     if number <= 1:
         return False
-    if number <= 3:
-        return True
+    if number <= BASIC_PRIMES.max():
+        return number in BASIC_PRIMES
+
     if number % 2 == 0 or number % 3 == 0:
         return False
 
@@ -14,6 +20,10 @@ def is_prime(number: int):
 
     return True
 
+def get_factors(number: int):
+    ret = list()
+    flatten(factor(number), ret)
+    return ret
 
 def factor(number):
     if is_prime(number) or number == 1:
@@ -30,18 +40,22 @@ def factor(number):
 
 
 def flatten(arr, new_arr):
-    print(arr)
     for i in arr:
-        print('i = {}'.format(i))
-        print('i is int: {}, i is list: {}'.format(type(i) is int, type(i) is list))
         if type(i) is int:
             new_arr.append(i)
-            continue
         if type(i) is list:
             new_arr.append(flatten(i, new_arr))
 
+    while None in new_arr:
+        new_arr.remove(None)
+
+
 if __name__ == "__main__":
-    result = []
-    flatten(factor(8), result)
+    result = list()
+    flatten([1, [2, [3, 4, [5]]]], result)
+
+
+
+
     print(result)
 
