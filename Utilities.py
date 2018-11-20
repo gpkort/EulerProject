@@ -10,6 +10,18 @@ def get_primes(number):
         number += 1
 
 
+def get_triangle(number: int):
+    # (n+1)
+    # (2)
+    last = number + 1
+    while True:
+        number += last
+        last += 1
+        yield number
+
+def get_definite_triangle(number):
+    return None
+
 def is_prime(number: int):
     if number <= 1:
         return False
@@ -32,6 +44,22 @@ def get_factors(number: int):
     ret = list()
     flatten(factor(number), ret)
     return ret
+
+
+def all_factors(number: int):
+    factors = list()
+
+    if is_prime(number) or number == 1:
+        factors = [1, number]
+    else:
+        i = 1
+
+        while i < number:
+            if number % i == 0:
+                factors += [i, int(number/i)]
+            i += 1
+
+    return list(set(factors))
 
 
 def factor(number):
@@ -57,6 +85,7 @@ def flatten(arr, new_arr):
 
     while None in new_arr:
         new_arr.remove(None)
+
 
 def get_linear_max_product(grid):
     max_val = 0

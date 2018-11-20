@@ -277,3 +277,34 @@ We can see that 28 is the first triangle number to have over five divisors.
 What is the value of the first triangle number to have over five hundred divisors?
 """
 
+# for n in ut.get_triangle(1):
+#     if ut.is_prime(n):
+#         continue
+#     l = len(ut.all_factors(n))
+#     print(n)
+#     if l > 500:
+#         print(n)
+
+i = 0
+num_of_factors = list()
+triangles = list()
+
+triangle = ut.get_triangle(1)
+tri_num = list()
+
+while i < 1001:
+    tri = next(triangle)
+    tri_num.append(tri)
+    num_of_factors.append(len(ut.all_factors(tri)))
+    i += 1
+
+print(num_of_factors)
+print(tri_num)
+
+# i = 1
+# while i < 100000:
+#     if i & 1 == 0:
+#         if i % 100 == 0:
+#             print('i = {}, i/2 = {}'.format(i, i >> 1))
+#     i += 1
+
