@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import Utilities as ut
 import math
 import numpy as np
 from sklearn import datasets, linear_model
@@ -107,9 +108,6 @@ x = [3, 6, 10, 15, 21, 28, 36, 45, 55, 66, 78, 91, 105, 120, 136, 153, 171, 190,
      480690, 481671, 482653, 483636, 484620, 485605, 486591, 487578, 488566, 489555, 490545, 491536, 492528, 493521, 
      494515, 495510, 496506, 497503, 498501, 499500, 500500, 501501, 502503]
 """
-x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-y = [1, 3, 6, 10, 15, 21, 28, 36, 45, 55]
-plt.plot(x[:50], y[:50], 'o', color='black')
-plt.show()
+print(ut.get_definite_triangle(3))
 
 # math.factorial(n) / (math.factorial(k)*(n-k))

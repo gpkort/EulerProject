@@ -1,4 +1,5 @@
 import numpy as np
+import math
 
 BASIC_PRIMES = np.array([1, 2, 3, 5, 7, 11, 13, 17, 19])
 
@@ -19,8 +20,10 @@ def get_triangle(number: int):
         last += 1
         yield number
 
+
 def get_definite_triangle(number):
-    return None
+    return math.factorial(number+1) / (math.factorial(2) * (number - 2))
+
 
 def is_prime(number: int):
     if number <= 1:
