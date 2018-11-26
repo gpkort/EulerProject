@@ -22,7 +22,8 @@ def get_triangle(number: int):
 
 
 def get_definite_triangle(number):
-    return math.factorial(number+1) / (math.factorial(2) * (number - 2))
+    number += 1
+    return int(math.factorial(number) / (2 * math.factorial(number - 2)))
 
 
 def is_prime(number: int):
@@ -102,6 +103,47 @@ def get_linear_max_product(grid):
             j = j + 1
 
     return max_val
+
+
+def get_all_prime_factors(number):
+    if is_prime(number):
+        return [number]
+
+    primes = list()
+
+    primegen = get_primes(1)
+    p = next(primegen)
+
+    while p < number:
+        if number % p == 0:
+            primes.append(p)
+        p = next(primegen)
+
+    return primes
+
+
+def get_number_of_factors(number):
+    if is_prime(number):
+        return 2
+
+    exponents = np.array([])
+    primes = get_all_prime_factors(number)
+    print(primes)
+
+    for p in primes:
+        exp = 1
+        p_new = math.pow(p, exp)
+
+        while p_new < number:
+            if number % p_new == 0:
+                print(exp)
+                np.append(exponents, exp)
+            exp += 1
+            p_new = math.pow(p, exp)
+
+        exponents += 1
+        print(exponents)
+        return int(exponents.prod())
 
 
 def get_diagonal_max_product(grid, reverse=False):
